@@ -1,6 +1,6 @@
 # SCARF: A Single Cell ATAC-seq and RNA-seq Foundation Model
 
-SCARF is a large-scale foundation model designed for **single-cell ATAC-seq and RNA-seq integration and cell type prediction**.  
+SCARF is a large-scale foundation model designed for **single-cell ATAC-seq and RNA-seq**.  
 It provides pretrained weights, preprocessing pipelines, and tutorials to accelerate downstream biological discovery.
 
 ---
