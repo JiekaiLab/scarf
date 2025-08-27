@@ -18,7 +18,7 @@ It provides pretrained weights, preprocessing pipelines, and tutorials to accele
   - numpy, pandas, matplotlib, seaborn, jupyter
 - **Hardware**:
   - CPU: x86_64 architecture (tested on Intel i9 and AMD EPYC)
-  - GPU (recommended): NVIDIA GPU with CUDA >= 11.8 (tested on A800)
+  - GPU (recommended): NVIDIA GPU with CUDA >= 11.8 (tested on A800, H100)
   - Minimum RAM: 40 GB
 
 ---
@@ -26,42 +26,46 @@ It provides pretrained weights, preprocessing pipelines, and tutorials to accele
 ## ⚙️ Installation Guide
 
 ### 1. Clone the repository
+
 ```bash
 git clone https://github.com/JiekaiLab/scarf.git
 cd scarf
 ```
+
 ### 2. Create conda environment
+
 ```bash
 conda create -n scarf python=3.12.3 -y
 conda activate scarf
 ```
+
 ### 3. Install dependencies
+
 ```bash
-pip install -r requirements.txt
+bash env_setup.sh
 ```
+
 ### 4. Install GPU-enabled PyTorch
+
 Please refer to the official PyTorch installation guide(https://pytorch.org/get-started/locally/).
 
 ## 📊 Quick start
 
 We provide example datasets and pretrained models for quick testing. 
+
 ### Expected runtime on a normal desktop (40GB RAM, no GPU): ~2–3 minutes
 
 ### Run SCARF on your own data
 
-1. Preprocess your single-cell data(待修改):
-```bash
-   python preprocess/preprocess.py --input data/raw.h5ad --output ./output
-```
+1. Preprocess your single-cell data ([preprocess.ipynb](./preprocess.ipynb))  
 
-2. Run inference(待修改):
-```bash
-   python get_embedding.py --input data/processed.h5ad --weights weights/
-```
+2. Run inference ([embedding.ipynb](./embedding.ipynb))  
+
 
 ## 🎯Downstream Tasks
 
 We provide ready-to-use Jupyter notebooks demonstrating how to apply **SCARF** to different downstream tasks:
+
 - **Cell type prediction** ([CellType_prediction.ipynb](./downstream_tasks/CellType_prediction.ipynb))  
   Predicts cell type labels from multi-omic embeddings.
 
@@ -81,7 +85,7 @@ SCARF/
 ├── prior_data/           # Token dictionaries and metadata
 ├── scripts/              # Preprocessing and inference scripts
 ├── weights/              # Pretrained model weights (download from Zenodo)
-└── requirements.txt      # Dependencies
+└── env_setup.sh          # Dependencies
 ```
 
 ---
