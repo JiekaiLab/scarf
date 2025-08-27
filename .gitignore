@@ -12,3 +12,4 @@ data/*.h5ad
 __pycache__/
 *.log
 *.tmp
+.ipynb_checkpoints/*
