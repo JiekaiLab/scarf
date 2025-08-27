@@ -59,6 +59,18 @@ We provide example datasets and pretrained models for quick testing.
    python get_embedding.py --input data/processed.h5ad --weights weights/
 ```
 
+## Downstream Tasks
+
+We provide ready-to-use Jupyter notebooks demonstrating how to apply **SCARF** to different downstream tasks:
+- **Cell type prediction** ([CellType_prediction.ipynb](./downstream_tasks/CellType_prediction.ipynb))  
+  Predicts cell type labels from multi-omic embeddings.
+
+- **Cell Matching** ([Cell-matching.ipynb](./downstream_tasks/Cell-matching.ipynb))  
+  Aligns and matches cells across modalities (scRNA-seq and scATAC-seq).
+
+- **Cell RNA-Inference** ([RNA-Inference.ipynb](./downstream_tasks/RNA-Inference.ipynb))  
+  Predicts gene expression of cells through scATAC-seq data.
+
 ## 📂 Repository Structure
 
 ```
