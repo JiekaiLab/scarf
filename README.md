@@ -59,7 +59,7 @@ We provide example datasets and pretrained models for quick testing.
    python get_embedding.py --input data/processed.h5ad --weights weights/
 ```
 
-## Downstream Tasks
+## 🎯Downstream Tasks
 
 We provide ready-to-use Jupyter notebooks demonstrating how to apply **SCARF** to different downstream tasks:
 - **Cell type prediction** ([CellType_prediction.ipynb](./downstream_tasks/CellType_prediction.ipynb))  
