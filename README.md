@@ -1,24 +1,106 @@
-## environment setup
-### Prerequisites
-NVIDIA GPU with CUDA 11.8 compatibility
+# SCARF: A Single Cell ATAC-seq and RNA-seq Foundation Model
 
-Conda package manager (Miniconda or Anaconda)
+SCARF is a large-scale foundation model designed for **single-cell ATAC-seq and RNA-seq integration and cell type prediction**.  
+It provides pretrained weights, preprocessing pipelines, and tutorials to accelerate downstream biological discovery.
 
-### Installation Methods
-#### Method 1: Using environment.yml
-conda env create -f environment.yml
+---
 
-#### Method 2: Manual Installation
-##### Create and activate the base environment:
+## 🚀 System Requirements
 
-conda create -p scarf-env python=3.12.3 -c conda-forge
-conda activate scarf-env
-##### Install CUDA toolkit:
+- **Operating system**: Linux (Ubuntu 20.04+), macOS, Windows (via WSL2)
+- **Python version**: == 3.12.3
+- **Dependencies**:
+  - PyTorch >= 2.3.1
+  - Scanpy >= 1.11.0
+  - Anndata >= 0.9
+  - scikit-learn == 1.5.2
+  - transformers==4.46.3
+  - numpy, pandas, matplotlib, seaborn, jupyter
+- **Hardware**:
+  - CPU: x86_64 architecture (tested on Intel i9 and AMD EPYC)
+  - GPU (recommended): NVIDIA GPU with CUDA >= 11.8 (tested on A800)
+  - Minimum RAM: 40 GB
 
-conda install -c nvidia/label/cuda-11.8.0 cudatoolkit=11.8.0 cuda-nvcc=11.8.89
-##### Install PyTorch with CUDA 11.8 support:
+---
 
-pip install torch==2.3.1+cu118 torchvision==0.18.1+cu118 torchaudio==2.3.1+cu118 --index-url https://download.pytorch.org/whl/cu118
-##### Install core packages:
+## ⚙️ Installation Guide
 
-pip install scanpy==1.11.0 scib==1.1.7 scikit-learn==1.5.2 transformers==4.46.3
+### 1. Clone the repository
+```bash
+git clone https://github.com/JiekaiLab/scarf.git
+cd scarf
+```
+### 2. Create conda environment
+```bash
+conda create -n scarf python=3.12.3 -y
+conda activate scarf
+```
+### 3. Install dependencies
+```bash
+pip install -r requirements.txt
+```
+### 4. Install GPU-enabled PyTorch
+Please refer to the official PyTorch installation guide(https://pytorch.org/get-started/locally/).
+
+## 📊 Quick start
+
+We provide example datasets and pretrained models for quick testing. 
+### Expected runtime on a normal desktop (40GB RAM, no GPU): ~2–3 minutes
+
+### Run SCARF on your own data
+
+1. Preprocess your single-cell data(待修改):
+```bash
+   python preprocess/preprocess.py --input data/raw.h5ad --output ./output
+```
+
+2. Run inference(待修改):
+```bash
+   python get_embedding.py --input data/processed.h5ad --weights weights/
+```
+
+## 📂 Repository Structure
+
+```
+SCARF/
+├── data/                 # data for demo
+├── downstream_tasks/     # Jupyter notebooks for demo and usage
+├── scarf/                # model file
+├── prior_data/           # Token dictionaries and metadata
+├── scripts/              # Preprocessing and inference scripts
+├── weights/              # Pretrained model weights (download from Zenodo)
+└── requirements.txt      # Dependencies
+```
+
+---
+
+## 📜 License
+
+This project is released under the **GNU General Public License v3.0**.  
+See [LICENSE](./LICENSE) for details.
+
+---
+
+## 🔗 Links
+
+* GitHub Repository: [JiekaiLab/scarf](https://github.com/JiekaiLab/scarf)
+* Pretrained weights & large files: [Zenodo DOI](https://doi.org/10.5281/zenodo.16956913)
+
+---
+
+## 📖 Citation
+
+If you use SCARF in your research, please cite:
+
+```bibtex
+@misc{SCARF2025,
+  title   = {SCARF: A Single Cell ATAC-seq and RNA-seq Foundation Model},
+  author  = {Guole Liu#,Tianyu Wang#,Yingying Zhao#,Quanyou Cai#,Xiaotao Wang#,Ziyi Wen,Lihui Lin*, Yongbing Zhao*, Ge Yang*,Jiekai Chen*},
+  year    = {2025},
+  url     = {https://github.com/JiekaiLab/scarf},
+  doi     = {https://doi.org/10.1101/2025.04.07.647689}
+}
+```
+
+---
+
