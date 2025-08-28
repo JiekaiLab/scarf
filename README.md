@@ -42,6 +42,18 @@ conda env create -n scarf -f environment.yml
 ## 📊 Quick start
 
 We provide example datasets and pretrained models for quick testing. 
+### Download demo data and pretrained model files
+Run the notebook ([download_data.ipynb](./downstream_tasks/download_data.ipynb)) to download automatically:
+
+- Download the demo dataset (demo_hPBMC.tar.gz) into the data/ folder.
+
+- Download model files (model_files.tar.gz) and extract:
+
+    - weights/ → into the weights/ folder
+
+    - prior_data/ → into the prior_data/ folder
+
+This ensures all required data and weights are available locally.
 
 ### Expected runtime on a normal desktop (40GB RAM, no GPU): ~2–3 minutes
 
@@ -90,7 +102,7 @@ See [LICENSE](./LICENSE) for details.
 ## 🔗 Links
 
 * GitHub Repository: [JiekaiLab/scarf](https://github.com/JiekaiLab/scarf)
-* Pretrained weights & large files: [Zenodo DOI](https://doi.org/10.5281/zenodo.16956913)
+* Pretrained weights & large files: [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.16956913.svg)](https://doi.org/10.5281/zenodo.16956913)
 
 ---
 
