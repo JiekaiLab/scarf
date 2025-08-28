@@ -113,7 +113,7 @@ If you use SCARF in your research, please cite:
 ```bibtex
 @misc{SCARF2025,
   title   = {SCARF: A Single Cell ATAC-seq and RNA-seq Foundation Model},
-  author  = {Guole Liu#,Tianyu Wang#,Yingying Zhao#,Quanyou Cai#,Xiaotao Wang#,Ziyi Wen,Lihui Lin*, Yongbing Zhao*, Ge Yang*,Jiekai Chen*},
+  author  = {Guole Liu#,Tianyu Wang#,Yingying Zhao#,Quanyou Cai#,Xiaotao Wang#,Ziyi Wen,Yaofeng Wang,Lihui Lin*, Yongbing Zhao*, Ge Yang*,Jiekai Chen*},
   year    = {2025},
   url     = {https://github.com/JiekaiLab/scarf},
   doi     = {https://doi.org/10.1101/2025.04.07.647689}
