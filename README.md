@@ -7,7 +7,7 @@ It provides pretrained weights, preprocessing pipelines, and tutorials to accele
 
 ## 🚀 System Requirements
 
-- **Operating system**: Linux (Ubuntu 20.04+), macOS, Windows (via WSL2)
+- **Operating system**: Linux (Ubuntu 20.04+)
 - **Python version**: == 3.12.3
 - **Dependencies**:
   - PyTorch >= 2.3.1
