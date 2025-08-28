@@ -32,22 +32,14 @@ git clone https://github.com/JiekaiLab/scarf.git
 cd scarf
 ```
 
-### 2. Create conda environment
+### 2. Create conda environment and Install dependencies
 
 ```bash
 conda create -n scarf python=3.12.3 -y
 conda activate scarf
-```
-
-### 3. Install dependencies
-
-```bash
 bash env_setup.sh
 ```
 
-### 4. Install GPU-enabled PyTorch
-
-Please refer to the official PyTorch installation guide(https://pytorch.org/get-started/locally/).
 
 ## 📊 Quick start
 
