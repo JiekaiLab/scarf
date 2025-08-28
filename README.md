@@ -32,12 +32,10 @@ git clone https://github.com/JiekaiLab/scarf.git
 cd scarf
 ```
 
-### 2. Create conda environment and Install dependencies
+### 2. Create conda environment and install dependencies
 
 ```bash
-conda create -n scarf python=3.12.3 -y
-conda activate scarf
-bash env_setup.sh
+conda env create -n scarf -f environment.yml
 ```
 
 
