@@ -57,13 +57,17 @@ Run the notebook ([download_data.ipynb](./downstream_tasks/download_data.ipynb))
 
 This ensures all required data and weights are available locally.
 
-### Expected runtime on a normal desktop (40GB RAM, no GPU): ~2–3 minutes
 
 ### Run SCARF on your own data
 
-1. Preprocess your single-cell data ([preprocess.ipynb](./downstream_tasks/preprocess.ipynb))  
+1. Preprocess your single-cell data ([preprocess.ipynb](./downstream_tasks/preprocess.ipynb))
+  - 600GB Memory required for preprocessing the sample data provided
+  - Expected runtime : ~6 hours
 
 2. Run inference ([embedding.ipynb](./downstream_tasks/embedding.ipynb))  
+  - 10GB Memory required for inference the sample data provided.
+  - Expected runtime on a normal desktop (40GB RAM, no GPU): ~2–3 minutes
+  - Expected runtime on 1 GPU : ~20 seconds
 
 
 ## 🎯Downstream Tasks
@@ -89,7 +93,7 @@ SCARF/
 ├── prior_data/           # Token dictionaries and metadata
 ├── scripts/              # Preprocessing and inference scripts
 ├── weights/              # Pretrained model weights (download from Zenodo)
-└── env_setup.sh          # Dependencies
+└── environment.yml       # Dependencies
 ```
 
 ---
