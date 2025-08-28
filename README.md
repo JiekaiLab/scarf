@@ -3,6 +3,8 @@
 SCARF is a large-scale foundation model designed for **single-cell ATAC-seq and RNA-seq**.  
 It provides pretrained weights, preprocessing pipelines, and tutorials to accelerate downstream biological discovery.
 
+<img width="638" height="274" alt="image" src="https://github.com/user-attachments/assets/3ce77d03-c6a1-49bf-979a-e3c2fa542634" />
+
 ---
 
 ## 🚀 System Requirements
