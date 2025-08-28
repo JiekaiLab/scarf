@@ -57,9 +57,9 @@ We provide example datasets and pretrained models for quick testing.
 
 ### Run SCARF on your own data
 
-1. Preprocess your single-cell data ([preprocess.ipynb](./preprocess.ipynb))  
+1. Preprocess your single-cell data ([preprocess.ipynb](./downstream_tasks/preprocess.ipynb))  
 
-2. Run inference ([embedding.ipynb](./embedding.ipynb))  
+2. Run inference ([embedding.ipynb](./downstream_tasks/embedding.ipynb))  
 
 
 ## 🎯Downstream Tasks
