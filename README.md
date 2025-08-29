@@ -83,8 +83,8 @@ We provide ready-to-use Jupyter notebooks demonstrating how to apply **SCARF** t
 - **Cell RNA-Inference** ([RNA-Inference.ipynb](./downstream_tasks/RNA-Inference.ipynb))  
   Predicts gene expression of cells through scATAC-seq data.
   For this task, we provide **precomputed embeddings** (both RNA and ATAC) stored on [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.16956913.svg)](https://doi.org/10.5281/zenodo.16956913):  
-  - **RNA embeddings and reference anndata** (preprocessed for inference)  
-  - **ATAC embeddings** (paired with RNA data)  
+  - **RNA embeddings and reference anndata** (preprocessed for inference,will be publicly released soon.)  
+  - **ATAC embeddings** (paired with RNA data,will be publicly released soon.)  
 
 ## 📂 Repository Structure
 
