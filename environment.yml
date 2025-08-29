@@ -1,18 +1,20 @@
-name: scarf-env
+name: scarf
 channels:
-  - nvidia/label/cuda-11.8.0
-  - defaults
+  - conda-forge
+  - nvidia
 dependencies:
   - python=3.12.3
-  - cudatoolkit=11.8.0
-  - cuda-nvcc=11.8.89
+  - cudatoolkit=11.8
+  - nvidia::cuda-nvcc=11.8.89
   - pip
   - pip:
-    - torch==2.3.1+cu118
-    - torchvision==0.18.1+cu118
-    - torchaudio==2.3.1+cu118
-    - scanpy==1.11.0
-    - scib==1.1.7
+    - torch==2.3.1 --index-url https://download.pytorch.org/whl/cu118
+    - torchvision==0.18.1 --index-url https://download.pytorch.org/whl/cu118
+    - torchaudio==2.3.1 --index-url https://download.pytorch.org/whl/cu118
+    - triton==2.3.1
+    - transformers[torch]==4.46.3
     - scikit-learn==1.5.2
-    - transformers==4.46.3
-    - datasets==2.21.0
+    - anndata==0.9.0
+    - scanpy==1.11.0
+    - https://github.com/Dao-AILab/causal-conv1d/releases/download/v1.4.0/causal_conv1d-1.4.0+cu118torch2.3cxx11abiFALSE-cp312-cp312-linux_x86_64.whl
+    - https://github.com/state-spaces/mamba/releases/download/v2.2.2/mamba_ssm-2.2.2+cu118torch2.3cxx11abiFALSE-cp312-cp312-linux_x86_64.whl
