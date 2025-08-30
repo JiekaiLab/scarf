@@ -60,12 +60,12 @@ This ensures all required data and weights are available locally.
 
 1. Preprocess your single-cell data ([preprocess.ipynb](./downstream_tasks/preprocess.ipynb))
   - 600GB Memory required for preprocessing the sample data provided
-  - Expected runtime : ~6 hours
+  - Expected runtime : ~7 hours
 
 2. Run inference ([embedding.ipynb](./downstream_tasks/embedding.ipynb))  
   - 10GB Memory required for inference the sample data provided.
   - Expected runtime on a normal desktop (40GB RAM, no GPU): ~2–3 minutes
-  - Expected runtime on 1 GPU : ~20 seconds
+  - Expected runtime on single A800 GPU : ~20 seconds
 
 
 ## 🎯Downstream Tasks
