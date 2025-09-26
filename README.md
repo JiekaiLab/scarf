@@ -37,7 +37,7 @@ cd scarf
 ### 2. Create conda environment and install dependencies
 
 ```bash
-conda env create -n scarf -f environment.yml
+CONDA_CHANNEL_PRIORITY=flexible conda env create -n scarf -f environment.yml
 ```
 
 
