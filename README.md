@@ -1,133 +1,148 @@
 # SCARF: A Single Cell ATAC-seq and RNA-seq Foundation Model
 
-SCARF is a large-scale foundation model designed for **single-cell ATAC-seq and RNA-seq**.  
-It provides pretrained weights, preprocessing pipelines, and tutorials to accelerate downstream biological discovery.
+SCARF is a foundation model for single-cell RNA-seq, ATAC-seq, and paired
+multiome data. It provides pretrained weights, preprocessing utilities,
+embedding inference notebooks, and downstream analysis examples.
 
-<img width="638" height="274" alt="image" src="https://github.com/user-attachments/assets/3ce77d03-c6a1-49bf-979a-e3c2fa542634" />
+## System Requirements
 
----
+- Operating system: Linux, Ubuntu 20.04 or later recommended.
+- Python: 3.12.3.
+- GPU: NVIDIA GPU with CUDA 11.8 recommended for model inference.
+- CPU-only inference is supported for small examples, with longer runtime.
+- Memory: depends on dataset size and modality; use the preprocessing scripts
+  with local scratch storage for large AnnData objects.
 
-## 🚀 System Requirements
+## Installation
 
-- **Operating system**: Linux (Ubuntu 20.04+)
-- **Python version**: == 3.12.3
-- **Dependencies**:
-  - PyTorch >= 2.3.1
-  - Scanpy >= 1.11.0
-  - Anndata >= 0.9
-  - scikit-learn == 1.5.2
-  - transformers==4.46.3
-  - numpy, pandas, matplotlib, seaborn, jupyter
-- **Hardware**:
-  - CPU: x86_64 architecture (tested on Intel i9 and AMD EPYC)
-  - GPU (recommended): NVIDIA GPU with CUDA >= 11.8 (tested on A800, H100)
-  - Minimum RAM: 40 GB
-
----
-
-## ⚙️ Installation Guide
-
-### 1. Clone the repository
+### Conda
 
 ```bash
 git clone https://github.com/JiekaiLab/scarf.git
 cd scarf
+CONDA_CHANNEL_PRIORITY=flexible conda env create -f environment.yml
+conda activate scarf
+pip install -e .
 ```
 
-### 2. Create conda environment and install dependencies
+The editable installation step makes the `scarf` package importable from
+notebooks without copying the `scarf/` directory into `downstream_tasks/`.
+
+### Docker
+
+If you use the prepared Docker image, mount this repository and the data
+directory into the container:
 
 ```bash
-CONDA_CHANNEL_PRIORITY=flexible conda env create -n scarf -f environment.yml
+docker run --gpus all --rm -it \
+  -v /path/to/scarf-main:/workspace/scarf \
+  -v /path/to/data:/workspace/data \
+  -w /workspace/scarf \
+  scarf:latest bash
 ```
 
+Inside the container:
 
-## 📊 Quick start
-
-We provide example datasets and pretrained models for quick testing. 
-### Download demo data and pretrained model files
-Run the notebook ([download_data.ipynb](./downstream_tasks/download_data.ipynb)) to download automatically:
-
-- Download the demo dataset (demo_hPBMC.tar.gz) into the data/ folder.
-
-- Download model files (model_files.tar.gz) and extract:
-
-    - weights/ → into the weights/ folder
-
-    - prior_data/ → into the prior_data/ folder
-
-This ensures all required data and weights are available locally.
-
-
-### Run SCARF on your own data
-
-1. Preprocess your single-cell data ([preprocess.ipynb](./downstream_tasks/preprocess.ipynb))
-  - 600GB Memory required for preprocessing the sample data provided
-  - Expected runtime : ~6 hours
-
-2. Run inference ([embedding.ipynb](./downstream_tasks/embedding.ipynb))  
-  - 10GB Memory required for inference the sample data provided.
-  - Expected runtime on a normal desktop (40GB RAM, no GPU): ~2–3 minutes
-  - Expected runtime on 1 GPU : ~20 seconds
-
-
-## 🎯Downstream Tasks
-
-We provide ready-to-use Jupyter notebooks demonstrating how to apply **SCARF** to different downstream tasks:
-
-- **Cell type prediction** ([CellType_prediction.ipynb](./downstream_tasks/CellType_prediction.ipynb))  
-  Predicts cell type labels from multi-omic embeddings.
-
-- **Cell Matching** ([Cell-matching.ipynb](./downstream_tasks/Cell-matching.ipynb))  
-  Aligns and matches cells across modalities (scRNA-seq and scATAC-seq).
-
-- **Cell RNA-Inference** ([RNA-Inference.ipynb](./downstream_tasks/RNA-Inference.ipynb))  
-  Predicts gene expression of cells through scATAC-seq data.
-  For this task, we provide **precomputed embeddings** (both RNA and ATAC) stored on [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17205044.svg)](https://doi.org/10.5281/zenodo.17205044):  
-  - **RNA embeddings and reference anndata** (preprocessed for inference,will be publicly released soon.)  
-  - **ATAC embeddings** (paired with RNA data,will be publicly released soon.)  
-
-## 📂 Repository Structure
-
+```bash
+pip install -e .
+jupyter lab --ip 0.0.0.0 --port 8888 --allow-root
 ```
+
+More Docker notes are available in [docker/README.md](docker/README.md).
+
+## Download Required Files
+
+Run [downstream_tasks/download_data.ipynb](downstream_tasks/download_data.ipynb)
+or download the archives manually from Zenodo:
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17205044.svg)](https://doi.org/10.5281/zenodo.17205044)
+
+Place the extracted files under:
+
+- `weights/`: pretrained model configuration and checkpoint shards.
+- `prior_data/`: token dictionaries and prior statistics.
+- `data/`: optional demo or raw input data.
+
+See [prior_data/README.md](prior_data/README.md) for the role of each prior
+file, including the pickle files required by preprocessing.
+
+## Quick Start
+
+### 1. Preprocess Data
+
+Use the standalone preprocessing entrypoint:
+
+```bash
+python scripts/preprocessing/scM_convert.py
+```
+
+The script converts scRNA, scATAC, or scMultiome AnnData inputs into a
+HuggingFace `Dataset` compatible with SCARF embedding inference. Configure the
+input paths, species, modality, and output directory near the top of
+`scripts/preprocessing/scM_convert.py`.
+
+Additional notes are in
+[scripts/preprocessing/README.md](scripts/preprocessing/README.md).
+
+### 2. Run Embedding Inference
+
+Open and run:
+
+- [downstream_tasks/embedding.ipynb](downstream_tasks/embedding.ipynb)
+
+The notebook loads a preprocessed dataset with `datasets.load_from_disk()` and
+generates RNA and/or ATAC cell embeddings.
+
+### 3. Run Downstream Tasks
+
+Example notebooks are provided under `downstream_tasks/`:
+
+- [CellType_prediction.ipynb](downstream_tasks/CellType_prediction.ipynb):
+  cell type prediction from embeddings.
+- [Cell-matching.ipynb](downstream_tasks/Cell-matching.ipynb): cross-modality
+  cell matching.
+- [RNA-Inference.ipynb](downstream_tasks/RNA-Inference.ipynb): RNA inference
+  from ATAC-derived representations.
+
+Additional application-oriented analysis scripts are available in
+[downstream_tasks/application_analysis](downstream_tasks/application_analysis).
+
+## Repository Structure
+
+```text
 SCARF/
-├── data/                 # data for demo
-├── downstream_tasks/     # Jupyter notebooks for demo and usage
-├── scarf/                # model file
-├── prior_data/           # Token dictionaries and metadata
-├── scripts/              # Preprocessing and inference scripts
-├── weights/              # Pretrained model weights (download from Zenodo)
-└── environment.yml       # Dependencies
+|-- data/                 # Demo or user-provided data, not committed
+|-- docker/               # Docker usage notes
+|-- downstream_tasks/     # Notebooks and downstream analysis scripts
+|-- prior_data/           # Token dictionaries and prior statistics
+|-- scarf/                # Model and utility package
+|-- scripts/              # Preprocessing scripts
+|-- weights/              # Pretrained model files, downloaded separately
+|-- environment.yml       # Conda environment
+`-- pyproject.toml        # Editable package installation
 ```
 
----
+## Notes on Large Files
 
-## 📜 License
+Large checkpoints, raw AnnData files, processed datasets, embeddings, and most
+pickle prior files are intentionally excluded from version control. They should
+be downloaded from the project archive or generated locally.
 
-This project is released under the **GNU General Public License v3.0**.  
-See [LICENSE](./LICENSE) for details.
+## License
 
----
+This project is released under the GNU General Public License v3.0. See
+[LICENSE](LICENSE) for details.
 
-## 🔗 Links
-
-* GitHub Repository: [JiekaiLab/scarf](https://github.com/JiekaiLab/scarf)
-* Pretrained weights & large files: [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17205044.svg)](https://doi.org/10.5281/zenodo.17205044)
-
----
-
-## 📖 Citation
+## Citation
 
 If you use SCARF in your research, please cite:
 
 ```bibtex
 @misc{SCARF2025,
   title   = {SCARF: A Single Cell ATAC-seq and RNA-seq Foundation Model},
-  author  = {Guole Liu#,Tianyu Wang#,Yingying Zhao#,Quanyou Cai#,Xiaotao Wang#,Ziyi Wen,Yaofeng Wang,Lihui Lin*, Yongbing Zhao*, Ge Yang*,Jiekai Chen*},
+  author  = {Guole Liu#, Tianyu Wang#, Yingying Zhao#, Quanyou Cai#, Xiaotao Wang#, Ziyi Wen, Yaofeng Wang, Lihui Lin*, Yongbing Zhao*, Ge Yang*, Jiekai Chen*},
   year    = {2025},
   url     = {https://github.com/JiekaiLab/scarf},
   doi     = {https://doi.org/10.1101/2025.04.07.647689}
 }
 ```
-
----
-
