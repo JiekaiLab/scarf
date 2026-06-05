@@ -8,13 +8,29 @@ dependencies:
   - nvidia::cuda-nvcc=11.8.89
   - pip
   - pip:
-    - torch==2.3.1 --index-url https://download.pytorch.org/whl/cu118
-    - torchvision==0.18.1 --index-url https://download.pytorch.org/whl/cu118
-    - torchaudio==2.3.1 --index-url https://download.pytorch.org/whl/cu118
-    - triton==2.3.1
-    - transformers[torch]==4.46.3
-    - scikit-learn==1.5.2
-    - anndata==0.9.0
-    - scanpy==1.11.0
-    - https://github.com/Dao-AILab/causal-conv1d/releases/download/v1.4.0/causal_conv1d-1.4.0+cu118torch2.3cxx11abiFALSE-cp312-cp312-linux_x86_64.whl
-    - https://github.com/state-spaces/mamba/releases/download/v2.2.2/mamba_ssm-2.2.2+cu118torch2.3cxx11abiFALSE-cp312-cp312-linux_x86_64.whl
+      - torch==2.3.1 --index-url https://download.pytorch.org/whl/cu118
+      - torchvision==0.18.1 --index-url https://download.pytorch.org/whl/cu118
+      - torchaudio==2.3.1 --index-url https://download.pytorch.org/whl/cu118
+      - triton==2.3.1
+      - accelerate==1.0.1
+      - transformers[torch]==4.46.3
+      - datasets==2.21.0
+      - geomloss==0.2.6
+      - numpy==1.26.4
+      - pandas==2.2.3
+      - scipy==1.14.1
+      - h5py==3.11.0
+      - pyarrow==17.0.0
+      - tqdm==4.66.5
+      - matplotlib==3.9.2
+      - seaborn==0.13.2
+      - umap-learn==0.5.6
+      - scikit-learn==1.5.2
+      - anndata==0.9.0
+      - scanpy==1.11.0
+      - jupyterlab==4.2.5
+      - notebook==7.2.2
+      - ipykernel==6.29.5
+      - ipywidgets==8.1.5
+      - https://github.com/Dao-AILab/causal-conv1d/releases/download/v1.4.0/causal_conv1d-1.4.0+cu118torch2.3cxx11abiFALSE-cp312-cp312-linux_x86_64.whl
+      - https://github.com/state-spaces/mamba/releases/download/v2.2.2/mamba_ssm-2.2.2+cu118torch2.3cxx11abiFALSE-cp312-cp312-linux_x86_64.whl

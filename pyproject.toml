@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "scarf-single-cell"
+version = "0.1.0"
+description = "SCARF: a single-cell RNA-seq and ATAC-seq foundation model."
+readme = "README.md"
+requires-python = "==3.12.*"
+license = { text = "GPL-3.0-only" }
+authors = [
+  { name = "JiekaiLab" }
+]
+
+[tool.setuptools.packages.find]
+include = ["scarf*"]

@@ -1,15 +1,41 @@
-# 忽略权重文件
+# Model checkpoints and training artifacts
 weights/*.pth
 weights/*.pt
 weights/*.ckpt
 weights/*.bin
 weights/trainer_state.json
-prior_data/*.pickle
-# 忽略大数据文件
-data/*.h5ad
 
-# 忽略缓存
+# Prior data files are distributed separately
+prior_data/*.pickle
+prior_data/*.npz
+
+# Raw and processed single-cell data
+data/
+adata/
+processed_data/
+process_data/
+**/processed_data/
+**/process_data/
+*.h5ad
+*.h5
+*.loom
+
+# Inference and downstream outputs
+get_embeds/
+**/get_embeds/
+*.npy
+labels.tsv.gz
+figures/
+results/
+
+# Local manuscript review files
+response_letter*.docx
+response_letter*.pdf
+
+# Local caches
 __pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+**/.ipynb_checkpoints/
 *.log
 *.tmp
-.ipynb_checkpoints/*
