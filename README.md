@@ -25,8 +25,7 @@ conda activate scarf
 pip install -e .
 ```
 
-The editable installation step makes the `scarf` package importable from
-notebooks without copying the `scarf/` directory into `downstream_tasks/`.
+
 
 ### Docker
 
