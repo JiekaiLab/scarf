@@ -33,7 +33,7 @@ If you use the prepared Docker image, mount this repository and the data
 directory into the container:
 
 ```bash
-docker run --gpus all --rm -it \
+docker run --gpus device=0 --rm -it \
   -v /path/to/scarf-main:/workspace/scarf \
   -v /path/to/data:/workspace/data \
   -w /workspace/scarf \
