@@ -6,7 +6,7 @@ image name below with the image tag used in your local registry.
 ## Start an Interactive Container
 
 ```bash
-docker run --gpus all --rm -it \
+docker run --gpus device=0 --rm -it \
   -v /path/to/scarf-main:/workspace/scarf \
   -v /path/to/data:/workspace/data \
   -w /workspace/scarf \
