@@ -10,7 +10,7 @@ docker run --gpus all --rm -it \
   -v /path/to/scarf-main:/workspace/scarf \
   -v /path/to/data:/workspace/data \
   -w /workspace/scarf \
-  scarf:latest bash
+  zhaoybio/scarf:latest bash
 ```
 
 Inside the container:
@@ -33,7 +33,7 @@ docker run --rm -it \
   -v /path/to/scarf-main:/workspace/scarf \
   -v /path/to/data:/workspace/data \
   -w /workspace/scarf \
-  scarf:latest bash
+  zhaoybio/scarf:latest bash
 ```
 
 ## Expected Mounted Files
