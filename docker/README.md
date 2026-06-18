@@ -26,16 +26,6 @@ jupyter lab --ip 0.0.0.0 --port 8888 --allow-root
 python scripts/preprocessing/scM_convert.py
 ```
 
-## Run Without GPU
-
-```bash
-docker run --rm -it \
-  -v /path/to/scarf-main:/workspace/scarf \
-  -v /path/to/data:/workspace/data \
-  -w /workspace/scarf \
-  zhaoybio/scarf:latest bash
-```
-
 ## Expected Mounted Files
 
 - Repository: mounted at `/workspace/scarf`.
